@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTDConfig3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<settings>
+<!-- 开启驼峰命名自动转换 -->
+    <setting name="mapUnderscoreToCamelCase" value="true"/>
+</settings>
+<!-- 使用自动扫描包 定义别名 -->
+    <typeAliases>
+        <package name="com.ssm.bean"/>
+    </typeAliases>
+
+    <!--<typeAliases>-->
+    <!--<packagename="com.ssm.bean"/>-->
+    <!--</typeAliases>-->
+    <!--配置环境默认的环境id是mysql-->
+    <environments default="mysql">
+        <environment id="mysql">
+            <!--使用JDBC的事物管理-->
+            <transactionManager type="JDBC"/>
+            <!--数据库连接池--><dataSource type="POOLED">
+            <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+            <!--表示服务器时区设置为协调世界时(UTC-->
+            <property name="url" value="jdbc:mysql://localhost:3306/db_mybatis?serverTimezone=UTC"/>
+            <property name="username" value="root"/>
+            <property name="password" value="root"/>
+        </dataSource>
+        </environment>
+    </environments>
+    <!--配置mapper的位置-->
+    <mappers>
+        <mapper resource="com/ssm/mapper/UserMapper.xml"/>
+        <mapper resource="com/ssm/mapper/CardMapper.xml"/>
+        <mapper resource="com/ssm/mapper/StudentMapper.xml"/>
+
+    </mappers>
+
+</configuration>
